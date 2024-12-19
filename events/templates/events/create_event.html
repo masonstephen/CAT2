@@ -1,0 +1,95 @@
+<!-- events/templates/events/create_event.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Event</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
+        .event-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        .event-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .event-container .form-group {
+            margin-bottom: 15px;
+        }
+        .event-container .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        .event-container .form-group input,
+        .event-container .form-group textarea,
+        .event-container .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .event-container .form-group input:focus,
+        .event-container .form-group textarea:focus,
+        .event-container .form-group select:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+        .event-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .event-container button:hover {
+            background-color: #0056b3;
+        }
+        .event-container nav {
+            margin-top: 10px;
+            text-align: center;
+        }
+        .event-container nav a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .event-container nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="event-container">
+        <h2>Create Event</h2>
+        <form method="POST" action="">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Create</button>
+        </form>
+        <nav>
+            <a href="{% url 'dashboard' %}">Back to Dashboard</a> |
+            <form id="logout-form" method="POST" action="{% url 'logout' %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" style="background:none;border:none;padding:0;color:#007bff;cursor:pointer;text-decoration:underline;">Logout</button>
+            </form>
+        </nav>
+    </div>
+</body>
+</html>

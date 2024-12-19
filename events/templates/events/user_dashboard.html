@@ -1,0 +1,80 @@
+<!-- events/templates/events/user_dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .user-dashboard-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .user-dashboard-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .events-list {
+            margin-top: 20px;
+        }
+        .events-list h2 {
+            color: #333;
+        }
+        .event-item {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+        }
+        .nav-links {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .nav-links a {
+            color: #007bff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="user-dashboard-container">
+        <h1>Welcome to Your Dashboard</h1>
+        <div class="nav-links">
+            <a href="{% url 'available_events' %}">View Available Events</a> |
+            <form id="logout-form" method="POST" action="{% url 'logout' %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" style="background:none;border:none;padding:0;color:#007bff;cursor:pointer;text-decoration:underline;">Logout</button>
+            </form>
+        </div>
+        <div class="events-list">
+            <h2>Your Booked Events</h2>
+            {% if events %}
+                {% for ticket in events %}
+                <div class="event-item">
+                    <h3>{{ ticket.event.title }}</h3>
+                    <p><strong>Date:</strong> {{ ticket.event.date }}</p>
+                    <p><strong>Description:</strong> {{ ticket.event.description }}</p>
+                    <p><strong>Status:</strong> {{ ticket.status }}</p>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p>You have no booked events.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

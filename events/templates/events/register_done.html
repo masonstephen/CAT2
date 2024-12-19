@@ -1,0 +1,49 @@
+<!-- events/templates/events/register_done.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Successful</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .register-done-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .register-done-container h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .register-done-container p {
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .register-done-container a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .register-done-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-done-container">
+        <h2>Registration Successful!</h2>
+        <p>Thank you for registering, {{ new_user.username }}. You can now <a href="{% url 'login' %}">log in</a>.</p>
+    </div>
+</body>
+</html>
