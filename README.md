@@ -58,8 +58,8 @@
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/masonstephen/Stephen-Mason-113832.git
-    cd Stephen-Mason-113832
+    git clone https://github.com/masonstephen/CAT2
+    cd CAT2
     ```
 
 2. **Create and activate a virtual environment:**
